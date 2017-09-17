@@ -5,8 +5,10 @@
       <div class="navbar-brand" *ngIf="currentUser">
         Welcome {{currentUser}}
       </div>
+      <div class="navbar-brand contact-logout" *ngIf="loginService.isLoggedIn" (click)="logout()">
+        Logout
+      </div>
     </div>
-
   </div>
 </nav>
 <router-outlet></router-outlet>

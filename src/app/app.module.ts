@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HttpModule,JsonpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { RoutingModule } from './routing.module';
 import { ContactModule } from './contact/contact.module';
@@ -21,7 +21,7 @@ import { API_CONFIG, APP_CONFIG } from './api-provider/app.apiconfig';
   ],
   imports: [
     BrowserModule, ContactModule, RoutingModule, PageNotFoundModule, ContactListModule,
-    LoginModule,HttpModule,FormsModule,ReactiveFormsModule
+    LoginModule, HttpModule, FormsModule, ReactiveFormsModule
   ],
   providers: [ContactService, AuthGuard, { provide: APP_CONFIG, useValue: API_CONFIG }],
   bootstrap: [AppComponent]

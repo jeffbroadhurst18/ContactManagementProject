@@ -27,6 +27,7 @@ export class ContactListComponent implements OnInit {
 
   deleteContact(id: number) {
     this.contactService.deleteContact(id).subscribe((data) => console.log('Contact ' + id + ' deleted'));
+    this.contactList = this.contactList.filter((data) => data.id !== id);
   }
 
   processContactResponse(data: Contact[]) {
@@ -37,11 +38,7 @@ export class ContactListComponent implements OnInit {
     this.router.navigate(['/contact', 0]);
   }
 
-  logout() {
-    this.loginService.isLoggedIn = false;
-    this.loginService.logout();
-    this.router.navigate(['/login']);
-  }
+
 }
 
 
