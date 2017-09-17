@@ -8,7 +8,7 @@ import { LoginService} from '../service/login.service';
 
 @NgModule({
   imports: [
-    CommonModule,FormsModule,LoginRoutingModule,
+    CommonModule, FormsModule, LoginRoutingModule,
   ],
   declarations: [LoginComponent],
   providers: [LoginService]

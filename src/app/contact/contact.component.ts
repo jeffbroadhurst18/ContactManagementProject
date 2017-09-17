@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Contact } from '../model/models';
-import { ContactService } from '../service/contact.service'
+import { ContactService } from '../service/contact.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -29,7 +29,7 @@ export class ContactComponent implements OnInit {
     this.route.paramMap.subscribe((data) => this.contactId = + data.get('id'));
     if (this.contactId === 0) {
       this.contact = new Contact();
-      this.isNew = true
+      this.isNew = true;
     } else {
       this.contactService.getContact(this.contactId).subscribe((data) => this.processContactResponse(data));
     }

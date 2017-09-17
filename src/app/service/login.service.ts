@@ -5,11 +5,11 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { APP_CONFIG } from '../api-provider/app.apiconfig';
 import { AppConfig } from '../api-provider/IAppConfig';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class LoginService {
-  isLoggedIn: boolean = false;
+  public isLoggedIn = false;
   baseUrl: string;
 
   constructor(private http: Http,
@@ -18,22 +18,21 @@ export class LoginService {
   }
 
   login(login: Login) {
-    //Sending credentials should be encrypted and we should use a token in 
-    //subsequent messages
+    // Sending credentials should be encrypted and we should use a token in
+    // subsequent messages
     return this.http.get(this.config.apiEndPoint + this.baseUrl +
       '/' + login.userName + '&' + login.password).map(
       (response: Response) => {
         let reply = response.json();
-        if (reply && reply.loggedin == 'true') {
+        if (reply && reply.loggedin === 'true') {
           localStorage.setItem('currentUser', JSON.stringify(login.userName).substr(1).slice(0, -1));
           this.isLoggedIn = true;
           return true;
-        }
-        else {
+        } else {
           this.isLoggedIn = false;
           return false;
         }
-      })
+      });
   }
 
   logout() {
@@ -45,7 +44,7 @@ export class LoginService {
   }
 
   getUsers() {
-    return
+    return;
   }
 
   getUser(user: string, password: string) {
@@ -56,7 +55,7 @@ export class LoginService {
   private getRequestOptions() {
     return new RequestOptions({
       headers: new Headers({
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       })
     });
   }

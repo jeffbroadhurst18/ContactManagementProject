@@ -7,8 +7,9 @@ import { PageNotFoundRoutingModule } from './page-not-found.routing.module';
 
 @NgModule({
   imports: [
-    CommonModule,FormsModule,PageNotFoundRoutingModule
+    CommonModule, FormsModule, PageNotFoundRoutingModule
   ],
   declarations: [PageNotFoundComponent]
 })
 export class PageNotFoundModule { }
+

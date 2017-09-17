@@ -5,7 +5,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { APP_CONFIG } from '../api-provider/app.apiconfig';
 import { AppConfig } from '../api-provider/IAppConfig';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ContactService {
@@ -45,7 +45,7 @@ export class ContactService {
   private getRequestOptions() {
     return new RequestOptions({
       headers: new Headers({
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       })
     });
   }

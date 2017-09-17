@@ -23,12 +23,10 @@ export class LoginComponent implements OnInit {
     let result = this.loginService.login(this.login).subscribe((result) => {
       if (result) {
         this.router.navigate(['/contact-list']);
-      }
-      else {
+      } else {
         this.isValidUser = false;
         this.showError = true;
       }
-    })
+    });
   }
 }
-

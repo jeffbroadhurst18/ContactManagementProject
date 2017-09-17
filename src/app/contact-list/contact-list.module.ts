@@ -10,7 +10,7 @@ import { ContactRoutingModule} from '../contact/contact.routing.module';
 
 @NgModule({
   imports: [
-    CommonModule,FormsModule,ContactListRoutingModule,ContactModule, ContactRoutingModule,
+    CommonModule, FormsModule, ContactListRoutingModule, ContactModule, ContactRoutingModule,
   ],
   declarations: [ContactListComponent],
   providers: [ContactService]
