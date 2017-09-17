@@ -37,8 +37,6 @@ export class ContactListComponent implements OnInit {
   addNew() {
     this.router.navigate(['/contact', 0]);
   }
-
-
 }
 
 
