@@ -11,19 +11,24 @@ import { ContactListModule } from './contact-list/contact-list.module';
 
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { ContactService } from './service/contact.service';
+import { UserService } from './service/user.service';
 import { LoginModule } from './login/login.module';
 import { AuthGuard } from './auth/auth.guard';
 import { API_CONFIG, APP_CONFIG } from './api-provider/app.apiconfig';
+import { UserModule } from './user/user.module';
+import { UserListModule } from './user-list/user-list.module';
+import { WildcardRoutingModule } from './wildcard.routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule, ContactModule, RoutingModule, PageNotFoundModule, ContactListModule,
-    LoginModule, HttpModule, FormsModule, ReactiveFormsModule
+    LoginModule, HttpModule, FormsModule, ReactiveFormsModule, UserModule, UserListModule,
+    WildcardRoutingModule
   ],
-  providers: [ContactService, AuthGuard, { provide: APP_CONFIG, useValue: API_CONFIG }],
+  providers: [ContactService, UserService, AuthGuard, { provide: APP_CONFIG, useValue: API_CONFIG }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,15 @@
+.user-line {
+    display: inline-block;
+}
+
+.user-label {
+    width: 25%;
+}
+
+.user-text {
+    width: 65%;
+}
+
+.user-border {
+    border: 1px solid black;
+}

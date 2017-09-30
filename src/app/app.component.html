@@ -1,12 +1,13 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <div class="navbar-header">
+    <div class="navbar-header" *ngIf="loginService.isLoggedIn">
       <a class="navbar-brand" [routerLink]="['/contact-list']">Contact Management</a>
-      <div class="navbar-brand" *ngIf="currentUser">
-        Welcome {{currentUser}}
-      </div>
+      <a class="navbar-brand" [routerLink]="['/user-list']" *ngIf="isAdmin">User Management</a>
       <div class="navbar-brand contact-logout" *ngIf="loginService.isLoggedIn" (click)="logout()">
         Logout
+      </div>
+      <div class="navbar-brand welcome-message" *ngIf="currentUser">
+        Welcome {{currentUser}}
       </div>
     </div>
   </div>

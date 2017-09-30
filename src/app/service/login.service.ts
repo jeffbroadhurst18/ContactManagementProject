@@ -24,8 +24,9 @@ export class LoginService {
       '/' + login.userName + '&' + login.password).map(
       (response: Response) => {
         let reply = response.json();
-        if (reply && reply.loggedin === 'true') {
+        if (reply && reply.loggedin !== 'false') {
           localStorage.setItem('currentUser', JSON.stringify(login.userName).substr(1).slice(0, -1));
+          localStorage.setItem('currentRole', reply.loggedin);
           this.isLoggedIn = true;
           return true;
         } else {
@@ -37,6 +38,7 @@ export class LoginService {
 
   logout() {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentRole');
   }
 
   processGetUserResponse(result: any): boolean {

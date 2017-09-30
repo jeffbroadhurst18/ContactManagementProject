@@ -8,30 +8,36 @@ const routes: Routes = [
             redirectTo: 'login',
             pathMatch: 'full'
       },
-      {
-            path: 'contact-list',
-            redirectTo: 'contact-list',
-            pathMatch: 'full'
-      },
-      {
-            path: 'contact',
-            redirectTo: 'contact',
-            pathMatch: 'full'
-      },
+      // {
+      //       path: 'contact-list',
+      //       redirectTo: 'contact-list',
+      //       pathMatch: 'full'
+      // },
+      // {
+      //       path: 'contact',
+      //       redirectTo: 'contact',
+      //       pathMatch: 'full'
+      // },
       {
             path: '',
             redirectTo: '/login',
             pathMatch: 'full'
-      },
-      {
-            path: '**',
-            redirectTo: '/login',
-            pathMatch: 'full'
       }
+      ,
+      //  {
+      //       path: 'user',
+      //       component: ''
+      // },
+      //  {
+      //       path: 'user-list',
+      //       redirectTo: 'user-list',
+      //       pathMatch: 'full'
+      // },
+     
 ];
 
 @NgModule({
-      imports: [RouterModule.forRoot(routes)],
+      imports: [RouterModule.forRoot(routes, { enableTracing: true })],
       exports: [RouterModule]
 })
 export class RoutingModule { }

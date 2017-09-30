@@ -11,15 +11,20 @@ import { Router } from '@angular/router';
 export class AppComponent implements DoCheck, OnInit {
     title = 'Contact Management';
     currentUser: string;
+    currentRole: string;
+    isAdmin : boolean;
 
     constructor(private loginService: LoginService, private router: Router) { }
 
     ngOnInit() {
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('currentRole');
     }
 
     ngDoCheck() {
         this.currentUser = localStorage.getItem('currentUser');
+        this.currentRole = localStorage.getItem('currentRole');
+        this.isAdmin = this.currentRole === 'admin' ? true : false;
     }
 
     logout() {
