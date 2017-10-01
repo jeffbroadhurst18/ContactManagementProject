@@ -17,6 +17,7 @@ export class UserComponent implements OnInit {
   isNew: Boolean;
   hideLog: Boolean;
   roles: string[];
+  clickedSave: Boolean;
 
   constructor(private route: ActivatedRoute, private userService: UserService,
     private router: Router, private fb: FormBuilder) {
@@ -27,6 +28,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.roles = ['user', 'admin'];
+    this.clickedSave = false;
     this.buildForm();
     this.route.paramMap.subscribe((data) => this.userName = data.get('name'));
     if (this.userName === '0') {
@@ -39,7 +41,6 @@ export class UserComponent implements OnInit {
 
   buildForm() {
     this.userForm = this.fb.group({
-      'id': ['', Validators.required],
       'name': ['', Validators.required],
       'password': ['', Validators.required],
       'repeatPassword': ['', Validators.required],
@@ -49,13 +50,14 @@ export class UserComponent implements OnInit {
 
   processUserResponse(data: any[]) {
     this.user.id = data[0].id;
-    this.user.name = data[0].name;
+    this.user.name = data[0].user;
     this.user.password = data[0].password;
-    this.user.repeatPassword = data[0].repeatPassword;
+    //this.user.repeatPassword = data[0].repeatPassword;
     this.user.role = data[0].role;
   }
 
   submit() {
+    this.clickedSave = true;
     if (this.isNew) {
       this.userService.addUser(this.user).subscribe((data) => this.afterSave());
     } else {

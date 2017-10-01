@@ -1,4 +1,4 @@
-<form [formGroup]="userForm" (submit)="submit()" class="col-md-offset-2 col-md-8" novalidate>
+<form *ngIf="user" [formGroup]="userForm" (submit)="submit()" class="col-md-offset-2 col-md-8" novalidate>
   <h2>User details</h2>
   <div class="form-group">
     <div class="user-line user-label"><label>Name</label></div>
@@ -10,10 +10,11 @@
     <div class="user-line user-text"><input type="password" formControlName="password" required class="form-control" placeholder="Password" [(ngModel)]="user.password"></div>
   </div>
   <div class="form-group">
-    <div class="user-line user-label"><label>repeat Password</label></div>
-    <div class="user-line user-text"><input type="text" formControlName="password" required class="form-control" placeholder="Repeat Password" [(ngModel)]="user.repeatPassword"></div>
+    <div class="user-line user-label"><label>Repeat Password</label></div>
+    <div class="user-line user-text"><input type="password" formControlName="repeatPassword" required class="form-control" placeholder="Repeat Password" [(ngModel)]="user.repeatPassword"></div>
+  <div class="alert alert-danger small" *ngIf="userForm.controls['repeatPassword'].valid
+  && user.password != user.repeatPassword && clickedSave">Password and Repeat Password are not the same</div>    
   </div>
-  <!-- NEED A DROP DOWN FOR ROLE -->
   <div class="form-group">
     <div class="user-line user-label"><label>Role</label></div>
     <div class="user-line user-text"><select formControlName="role" required class="form-control" placeholder="Role" [(ngModel)]="user.role">
@@ -26,8 +27,3 @@
     <button class="btn btn-primary" (click)="cancel()">Cancel</button>
   </div>
 </form>
-
-
-<select class="form-control" [formControl]="newPersonRoleForm.controls['role']" [(ngModel)]="newPersonRole.RoleId">
-                   
-            </select>
