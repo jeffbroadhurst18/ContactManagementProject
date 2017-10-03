@@ -41,7 +41,7 @@ export class UserComponent implements OnInit {
 
   buildForm() {
     this.userForm = this.fb.group({
-      'name': ['', Validators.required],
+      'user': ['', Validators.required],
       'password': ['', Validators.required],
       'repeatPassword': ['', Validators.required],
       'role': ['', Validators.required],
@@ -50,7 +50,7 @@ export class UserComponent implements OnInit {
 
   processUserResponse(data: any[]) {
     this.user.id = data[0].id;
-    this.user.name = data[0].user;
+    this.user.user = data[0].user;
     this.user.password = data[0].password;
     //this.user.repeatPassword = data[0].repeatPassword;
     this.user.role = data[0].role;

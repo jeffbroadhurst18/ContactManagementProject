@@ -6,10 +6,13 @@ export class Contact {
     city: string;
 }
 
-export class User {
+export class ReducedUser {
     id: number;
-    name: string;
+    user: string;
     password: string;
-    repeatPassword : string;
     role: string;
+}
+
+export class User extends ReducedUser {
+    repeatPassword : string;
 }

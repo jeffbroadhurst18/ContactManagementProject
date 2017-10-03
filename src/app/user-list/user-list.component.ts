@@ -25,9 +25,9 @@ export class UserListComponent implements OnInit {
     this.userService.getUsers().subscribe((data) => this.processUserResponse(data));
   }
 
-  deleteUser(id: number) {
-    this.userService.deleteUser(id).subscribe((data) => console.log('User ' + id + ' deleted'));
-    this.userList = this.userList.filter((data) => data.id !== id);
+  deleteUser(user: string) {
+    this.userService.deleteUser(user).subscribe((data) => console.log('User ' + user + ' deleted'));
+    this.userList = this.userList.filter((data) => data.user !== user);
   }
 
   processUserResponse(data: User[]) {
@@ -35,6 +35,6 @@ export class UserListComponent implements OnInit {
   }
 
   addNew() {
-    this.router.navigate(['/user', 0]);
+    this.router.navigate(['/user', '0']);
   }
 }

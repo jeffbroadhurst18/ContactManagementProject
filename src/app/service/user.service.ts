@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { User } from '../model/models';
+import { User, ReducedUser } from '../model/models';
 import { HttpClient, HttpHeaders, } from '@angular/common/http';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { APP_CONFIG } from '../api-provider/app.apiconfig';
@@ -22,11 +22,13 @@ export class UserService {
   }
 
   addUser(user: User) {
-    return this.http.post(this.config.apiEndPoint + this.baseUrl, JSON.stringify(user), this.getRequestOptions())
+    let reducedUser: ReducedUser = this.convertUser(user);
+    return this.http.post(this.config.apiEndPoint + this.baseUrl, JSON.stringify(reducedUser), this.getRequestOptions())
       .map((res: Response) => res.json());
   }
 
   updateUser(user: User) {
+    let reducedUser: ReducedUser = this.convertUser(user);
     return this.http.put(this.config.apiEndPoint + this.baseUrl, JSON.stringify(user), this.getRequestOptions())
       .map((res: Response) => res.json());
   }
@@ -36,10 +38,18 @@ export class UserService {
       .map((res: Response) => res.json());
   }
 
-  deleteUser(name: number) {
-    return this.http.delete(this.config.apiEndPoint + this.baseUrl + '/' + name, this.getRequestOptions()).
+  deleteUser(user: string) {
+    return this.http.delete(this.config.apiEndPoint + this.baseUrl + '/' + user, this.getRequestOptions()).
       map((res: Response) => res.json());
 
+  }
+
+  convertUser(user: User): ReducedUser {
+    let reducedUser: ReducedUser = new ReducedUser();
+    reducedUser.user = user.user;
+    reducedUser.password = user.password;
+    reducedUser.role = user.role;
+    return reducedUser;
   }
 
   private getRequestOptions() {
